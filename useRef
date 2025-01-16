@@ -1,0 +1,29 @@
+import { useEffect, useRef, useState } from "react";
+import "./App.css";
+import { useForm } from "react-hook-form";
+
+function App() {
+  const inputElement = useRef();
+
+  const btnClicked = () => {
+    console.log(inputElement.current);
+    inputElement.current.style.background = "green";
+  };
+  const [count, setCount] = useState(0);
+  const renderCount = useRef(0);
+
+  useEffect(() => {
+    renderCount.current = renderCount.current + 1;
+  }, []);
+
+  return (
+    <>
+      <input type="text" ref={inputElement} />
+      <button onClick={btnClicked}>Click here</button>
+      <input type="text" ref={inputElement} />
+      <button onClick={btnClicked}>Click here</button>
+    </>
+  );
+}
+
+export default App;
